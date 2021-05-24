@@ -76,7 +76,7 @@ public class WeiBoTopPlugin extends BotPlugin {
             Msg msg = Msg.builder().text(text);
             bot.sendGroupMsg(groupId,msg,false);
 
-            Msg msgDump = Msg.builder().share(CommonConstant.WEI_BO_TOP_URL, "进入微博头条", "你拉我唱大绵羊~", "");
+            Msg msgDump = Msg.builder().share(CommonConstant.WEI_BO_TOP_URL, "进入微博头条", "我拉你唱大绵羊~", "");
             bot.sendGroupMsg(groupId,msgDump,false);
         }
         return MESSAGE_IGNORE;

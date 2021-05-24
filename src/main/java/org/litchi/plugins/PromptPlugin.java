@@ -28,8 +28,6 @@ import java.util.stream.Collectors;
 @Slf4j
 public class PromptPlugin extends BotPlugin {
 
-
-
     @Value("${groupId}")
     private Long groupId;
 
