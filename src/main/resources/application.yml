@@ -1,0 +1,87 @@
+server:
+    port: 8081
+    tomcat:
+        uri-encoding: UTF-8
+        threads:
+            max: 1000
+        max-connections: 20000
+
+
+spring:
+
+    #运行环境
+    profiles:
+        active: prod
+
+    bot:
+        plugin-list:
+            - org.litchi.plugins.LogPlugin # 日志插件
+            - org.litchi.plugins.PromptPlugin # 自动提示插件
+            - org.litchi.plugins.WeatherPlugin # 天气插件
+            - org.litchi.plugins.ColorImagePlugin # 涩图插件
+            - org.litchi.plugins.World2ImagePlugin # 大图插件
+            - org.litchi.plugins.RecallPlugin # 撤回插件
+            - org.litchi.plugins.TransformPlugin # 文字转语言插件
+            - org.litchi.plugins.sensitiveWords.SensitiveWordsPlugin #敏感词提示
+            - org.litchi.plugins.sensitiveWords.AddSensitiveWordsPlugin #添加敏感词
+            - org.litchi.plugins.sensitiveWords.DelSensitiveWordsPlugin #移除敏感词
+            - org.litchi.plugins.CommandPlugin #指令插件
+            - org.litchi.plugins.WeiBoTopPlugin #微博头条
+
+    #数据源
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://106.15.94.235:3306/robot?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+        username: root
+        password: as153759
+
+        # 连接池配置
+        initial-size: 5
+        min-idle: 5
+        max-active: 20
+        # 连接等待超时时间
+        max-wait: 30000
+        # 配置检测可以关闭的空闲连接间隔时间
+        time-between-eviction-runs-millis: 60000
+        # 配置连接在池中的最小生存时间
+        min-evictable-idle-time-millis: 300000
+        validation-query: select '1' from dual
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        # 打开PSCache，并且指定每个连接上PSCache的大小
+        pool-prepared-statements: true
+        max-open-prepared-statements: 20
+        max-pool-prepared-statement-per-connection-size: 20
+
+    #Redis
+    redis:
+        host: 106.15.94.235
+        port: 6379
+        password: as153759
+        lettuce:
+            pool:
+                min-idle: 8
+                max-idle: 500
+                max-active: 2000
+                max-wait: 10000
+        timeout: 5000
+
+#Mybatis plus
+mybatis:
+    type-aliases-package: net.lz1998.pbbot.dao
+    mapper-locations: classpath:mapper/*Mapper.xml
+
+#mybatis-plus:
+#    configuration:
+#        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
+
+#系统变了配置
+mapKey: 2343f1281fb67c2cd8b2b73365055ae2
+caiYunWeatherKey: 7fbMHWHXRZl0H0rY
+defaultCityName: 闽侯
+adminId: 2982824388
+weiboTopNum: 10
+
+
