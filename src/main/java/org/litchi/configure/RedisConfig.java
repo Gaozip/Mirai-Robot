@@ -21,7 +21,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
  */
 
 @Configuration(proxyBeanMethods = false)
-public class RedisConfigure {
+public class RedisConfig {
 
     @Bean
     @ConditionalOnClass(RedisOperations.class)

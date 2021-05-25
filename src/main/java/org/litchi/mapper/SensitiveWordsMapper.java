@@ -22,7 +22,7 @@ public interface SensitiveWordsMapper extends BaseMapper<SensitiveWord> {
      * @param word
      * @return
      */
-    @Select(value = "SELECT * FROM sensitive_word WHERE word = #{word}")
+    @Select(value = "SELECT * FROM sensitive_word WHERE word = #{word} limit 1")
     Optional<SensitiveWord> findWord(@Param("word") String word);
 
     /**

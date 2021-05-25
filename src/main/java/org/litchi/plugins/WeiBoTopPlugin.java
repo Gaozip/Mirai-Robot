@@ -70,7 +70,7 @@ public class WeiBoTopPlugin extends BotPlugin {
                 weiboTopNum = num;
             }
             List<WeiBoTop> weiBoTopList = weiBoTopService.opsForWeiBoTopNews();
-            weiBoTopList = weiBoTopList.stream().limit(weiboTopNum + 1).collect(Collectors.toList());
+            weiBoTopList = weiBoTopList.stream().filter(item -> item.getNo() == null || !item.getNo().equals("No.•")).limit(weiboTopNum + 1).collect(Collectors.toList());
 
             String text = weiBoTopList.stream().map(item -> item.toString()).collect(Collectors.joining("\n"));
             Msg msg = Msg.builder().text(text);

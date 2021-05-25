@@ -26,8 +26,6 @@ public class WeiBoTop implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-
-
         sb.append("[" + (Strings.isBlank(no) ? "置顶" : no) + "] " + title);
         if(Strings.isNotBlank(hot)){
             sb.append("_" + hot);

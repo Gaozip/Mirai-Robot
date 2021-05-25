@@ -12,6 +12,7 @@ import org.litchi.entity.Serie;
 import org.litchi.entity.caiyun.CaiYunWeather;
 import org.litchi.entity.caiyun.Precipitation;
 import org.litchi.entity.caiyun.Temperature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -77,8 +78,11 @@ public class WeatherService {
     private final String GAO_DE_WEATHER_API_URL = "https://restapi.amap.com/v3/weather/weatherInfo?key=";
 
 
-    @Resource
     private RestTemplate restTemplate;
+    @Autowired
+    public void setRestTemplate(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @Resource
     private RedisService redisService;

@@ -77,6 +77,22 @@ mybatis:
 #    configuration:
 #        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
 
+# 异步线程配置
+
+async:
+    executor:
+        thread:
+            # 配置核心线程数
+            core_pool_size: 5
+            # 配置最大线程数
+            max_pool_size: 5
+            # 配置队列大小
+            queue_capacity: 99999
+            # 配置线程池中的线程的名称前缀
+            name:
+                prefix: async-service-
+
+
 #系统变了配置
 mapKey: 2343f1281fb67c2cd8b2b73365055ae2
 caiYunWeatherKey: 7fbMHWHXRZl0H0rY
