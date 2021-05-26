@@ -71,4 +71,5 @@ public interface Strings {
     String CRLF = "\r\n";
     String ORDER_DESC = "desc";
     String ORDER_ASC = "asc";
+    String CN_POINT = "•";
 }

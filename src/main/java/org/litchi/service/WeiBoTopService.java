@@ -5,6 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.litchi.constant.CommonConstant;
+import org.litchi.constant.Strings;
 import org.litchi.entity.WeiBoTop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -85,8 +86,7 @@ public class WeiBoTopService {
      */
     private void cleanNews(Elements allElements, List<WeiBoTop> weiBoTopList) {
 
-        allElements.stream().forEach(element -> {
-            String hot = element.select("span").get(0).text();
+        allElements.stream().filter(item -> !item.getElementsByClass(TR_NO_CLASS).get(0).text().equals(Strings.CN_POINT) ).forEach(element -> {
 
             WeiBoTop weiBoTop = new WeiBoTop();
 
