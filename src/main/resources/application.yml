@@ -27,6 +27,7 @@ spring:
             - org.litchi.plugins.sensitiveWords.DelSensitiveWordsPlugin #移除敏感词
             - org.litchi.plugins.CommandPlugin #指令插件
             - org.litchi.plugins.WeiBoTopPlugin #微博头条
+            - org.litchi.plugins.AWordPlugin #一言
 
     #数据源
     datasource:
@@ -98,6 +99,6 @@ mapKey: 2343f1281fb67c2cd8b2b73365055ae2
 caiYunWeatherKey: 7fbMHWHXRZl0H0rY
 defaultCityName: 闽侯
 adminId: 2982824388
-weiboTopNum: 10
+weiboTopNum: 20
 
 

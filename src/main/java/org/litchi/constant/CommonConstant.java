@@ -1,5 +1,8 @@
 package org.litchi.constant;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @author: gaozp
  * @date: 2021-05-13 14:34
@@ -32,4 +35,27 @@ public interface CommonConstant {
      */
     String WEI_BO_TOP_URL = "https://s.weibo.com/top/summary";
 
+    /**
+     * 一言
+     */
+    String A_WORD_URL = "https://v1.hitokoto.cn?c=";
+
+    /**
+     * 初始化typesMap
+     */
+    Map<Character, String> typesMap = new ConcurrentHashMap<Character,String>() {
+        {
+            put('a', "动画");
+            put('b', "漫画");
+            put('c', "游戏");
+            put('d', "文学");
+            put('e', "原创");
+            put('f', "来自网络");
+            put('g', "其他");
+            put('h', "影视");
+            put('i', "诗词");
+            put('j', "网易云");
+            put('k', "哲学");
+        }
+    };
 }
