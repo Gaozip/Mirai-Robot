@@ -53,12 +53,12 @@ public class PromptPlugin extends BotPlugin {
      * 提醒喝水小助手
      * @throws InterruptedException
      */
-    @Scheduled(cron = "0 0 9,10,11,13,14,15,16,17,18 ? * 1,2,3,4,5",zone = "Asia/Shanghai")
-    public void promptDrinkWater() throws InterruptedException {
-
-        Msg msg = Msg.builder().image(CommonConstant.DRINK_IMAGE_URL);
-        botSendMsgService.sendGroupMsg(groupId,msg);
-    }
+//    @Scheduled(cron = "0 0 9,10,11,13,14,15,16,17,18 ? * 1,2,3,4,5",zone = "Asia/Shanghai")
+//    public void promptDrinkWater() throws InterruptedException {
+//
+//        Msg msg = Msg.builder().image(CommonConstant.DRINK_IMAGE_URL);
+//        botSendMsgService.sendGroupMsg(groupId,msg);
+//    }
 
 
     /**

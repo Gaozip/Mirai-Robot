@@ -20,7 +20,7 @@ public enum CommandEnum {
     SPECIFY_WEATHER_PREFIX("#天气预报/", "指定城市天气预报(#天气预报/ + 城市)"),
     DEFAULT_WEI_BO_TOP_PREFIX("#微博头条","获取微博头条(默认20条)"),
     SPECIFY_WEI_BO_TOP_PREFIX("#微博头条/","获取指定微博头条条数(最多50条)"),
-    A_WORD_PREFIX("#一言","获取一言(a-动漫,b-漫画,c-游戏,d-文字,e-原创,f-来自网络,g-其他,h-影视,i-诗词,j-网易云,k-哲学,l-抖机灵)");
+    A_WORD_PREFIX("#一言","获取一言(a-动漫,b-漫画,c-游戏,d-文字,e-原创,f-来自网络,g-其他,h-影视,i-诗词,j-网易云,k-哲学)");
 
     private String command;
     private String desc;
