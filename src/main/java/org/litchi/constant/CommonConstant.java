@@ -13,6 +13,8 @@ public interface CommonConstant {
 
     String REDIS_CITY_KEY = "REDIS_AD_CODE_CITY";
     String REDIS_COLOR_IMAGE_KEY = "REDIS_COLOR_IMAGE";
+    String REDIS_YELLOW_IMAGE_KEY = "REDIS_YELLOW_IMAGE";
+    String REDIS_YELLOW_NOVEL_KEY = "REDIS_YELLOW_NOVEL";
 
     /**
      * 折线图url

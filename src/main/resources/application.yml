@@ -28,6 +28,7 @@ spring:
             - org.litchi.plugins.CommandPlugin #指令插件
             - org.litchi.plugins.WeiBoTopPlugin #微博头条
             - org.litchi.plugins.AWordPlugin #一言
+            - org.litchi.plugins.YellowNovelPlugin #黄涩小说
 
     #数据源
     datasource:
