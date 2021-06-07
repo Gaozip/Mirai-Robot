@@ -13,6 +13,7 @@ import org.litchi.entity.YellowImage;
 import org.litchi.entity.YellowNovel;
 import org.litchi.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -32,6 +33,9 @@ public class YellowNovelPlugin extends BotPlugin {
         this.redisService = redisService;
     }
 
+    @Value("${adminId}")
+    private long adminId;
+
     @Override
     public int onGroupMessage(@NotNull Bot bot, @NotNull OnebotEvent.GroupMessageEvent event) {
 
@@ -40,6 +44,13 @@ public class YellowNovelPlugin extends BotPlugin {
         long userId = event.getUserId();
 
         if(message.trim().equals(CommandEnum.YELLOW_NOVEL_PREFIX.getCommand())){
+
+            if(userId != adminId){
+                Msg msg = Msg.builder().text(CommonConstant.FEATURES_JUST_FOR_ADMIN);
+                bot.sendGroupMsg(groupId,msg,false);
+                return MESSAGE_IGNORE;
+            }
+
             YellowNovel yellowNovel = this.genYellowNovel();
             Msg msg1 = Msg.builder().at(userId).text("【" + yellowNovel.getTitle() + "】");
             bot.sendGroupMsg(groupId,msg1,false);

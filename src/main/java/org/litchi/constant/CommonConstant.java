@@ -60,4 +60,6 @@ public interface CommonConstant {
             put('k', "哲学");
         }
     };
+
+    String FEATURES_JUST_FOR_ADMIN = "此功能仅开放给admin用户!";
 }

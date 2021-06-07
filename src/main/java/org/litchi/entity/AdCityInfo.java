@@ -17,6 +17,8 @@ import java.io.Serializable;
 @TableName("sys_city_code")
 public class AdCityInfo implements Serializable {
 
+
+    private Long id;
     /**
      * 城市名称
      */

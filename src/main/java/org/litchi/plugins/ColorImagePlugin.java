@@ -14,6 +14,7 @@ import org.litchi.entity.ColorImage;
 import org.litchi.entity.YellowImage;
 import org.litchi.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -33,6 +34,11 @@ public class ColorImagePlugin extends BotPlugin {
     private final String UPPER_LIMIT = "涩图接口1达到请求上限！";
 
     private final String CALLBACK_TIP = "图片将在45s后撤回_";
+
+    private final int MAX_IMAGE_NUM = 3;
+
+    @Value("${adminId}")
+    private long adminId;
 
     /**
      * 涩图接口1 url
@@ -62,26 +68,35 @@ public class ColorImagePlugin extends BotPlugin {
 
         long groupId = event.getGroupId();
         String message = event.getRawMessage();
+        long userId = event.getUserId();
+
         if (CommandEnum.COLOR_IMAGE_PREFIX.getCommand().equals(message)) {
 
-            YellowImage yellowImage = this.genColorImage4();
-            Msg msg = Msg.builder().text(yellowImage.getTitle() + "\n");
-
-            for(int i = 0; i < 3; i ++){
-                Random random = new Random();
-                int nextInt = random.nextInt(yellowImage.getImageNum());
-                msg.image(yellowImage.getUrl() + nextInt + ".jpg");
-            }
-
-            int messageId = bot.sendGroupMsg(groupId, msg, false).getMessageId();
-            if (messageId <= 0) {
+            if(userId != adminId){
+                Msg msg = Msg.builder().image(this.genColorImage3()).text("\n" + CALLBACK_TIP).at(event.getUserId());
+                int messageId = bot.sendGroupMsg(groupId, msg, false).getMessageId();
+                //单位是毫秒
+                TimeUnit.MILLISECONDS.sleep(45000);
+                bot.deleteMsg(messageId);
                 return MESSAGE_IGNORE;
             }
 
-            //单位是毫秒
-            TimeUnit.MILLISECONDS.sleep(30000);
+            if(userId == adminId){
+                YellowImage yellowImage = this.genColorImage4();
+                Msg msg = Msg.builder().text(yellowImage.getTitle() + "\n");
 
-            bot.deleteMsg(messageId);
+                for(int i = 0; i < MAX_IMAGE_NUM; i ++){
+                    Random random = new Random();
+                    int nextInt = random.nextInt(yellowImage.getImageNum());
+                    msg.image(yellowImage.getUrl() + nextInt + ".jpg");
+                }
+
+                int messageId = bot.sendGroupMsg(groupId, msg, false).getMessageId();
+                //单位是毫秒
+                TimeUnit.MILLISECONDS.sleep(30000);
+                bot.deleteMsg(messageId);
+                return MESSAGE_IGNORE;
+            }
         }
         return MESSAGE_IGNORE;
     }
